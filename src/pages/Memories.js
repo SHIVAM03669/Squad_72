@@ -1,0 +1,48 @@
+import { memories } from '../data/memories.js';
+
+export function Memories() {
+  setTimeout(() => {
+    document.querySelectorAll('.memory-card').forEach(card => {
+      const link = card.querySelector('.view-more-link');
+      const coverImage = card.querySelector('.cover-image');
+      if (link && coverImage) {
+        coverImage.addEventListener('click', (e) => {
+          e.preventDefault();
+          link.click();
+        });
+      }
+    });
+  }, 100);
+
+  return `
+    <section class="pt-32 pb-20 px-4 relative overflow-hidden">
+      <div class="container mx-auto relative z-10">
+        <h2 class="text-4xl font-bold text-center mb-16 text-white">Our Memories</h2>
+        <div class="grid md:grid-cols-2 gap-12 max-w-7xl mx-auto px-4">
+          ${memories.map(memory => `
+            <div class="memory-card bg-gray-800/50 backdrop-blur-lg rounded-xl overflow-hidden border border-gray-700 hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
+              <div class="h-72 overflow-hidden cursor-pointer">
+                <img src="${memory.coverImage}" alt="${memory.title}" class="cover-image w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+              </div>
+              <div class="p-8">
+                <div class="text-sm text-[#F3B15C] mb-3">${memory.date}</div>
+                <h3 class="text-2xl font-bold mb-4 text-white">${memory.title}</h3>
+                <p class="text-gray-400 mb-6">${memory.description}</p>
+                <a href="/memory/${memory.id}" class="view-more-link inline-flex items-center bg-[#FF3939] hover:bg-[#FF6347] text-white px-6 py-3 rounded-lg transition-all duration-300">
+                  View More
+                  <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+
+      <!-- Background Elements -->
+      <div class="absolute top-20 right-0 w-72 h-72 bg-[#FF3939]/10 rounded-full filter blur-3xl animate-pulse"></div>
+      <div class="absolute bottom-20 left-0 w-96 h-96 bg-[#FF3939]/10 rounded-full filter blur-3xl animate-pulse delay-1000"></div>
+    </section>
+  `;
+}
