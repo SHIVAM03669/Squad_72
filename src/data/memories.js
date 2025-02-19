@@ -252,12 +252,12 @@ export const memories = [
         },
         {
           type: 'image',
-          url: '/iit/class.jpg',
+          url: '/iit/1 (32).jpg',
           
         },
         {
           type: 'image',
-          url: '/iit/1 (32).jpg',
+          url: '/iit/class.jpg',
           
         },
         {
@@ -290,11 +290,11 @@ export const memories = [
           url: '/iit/1 (37).jpg',
           
         },
-        {
-          type: 'image',
-          url: '/iit/1 (38).jpg',
+        // {
+        //   type: 'image',
+        //   url: '/iit/1 (38).jpg',
           
-        },
+        // },
         {
           type: 'image',
           url: '/iit/1 (39).jpg',
@@ -305,11 +305,11 @@ export const memories = [
           url: '/iit/1 (40).jpg',
           
         },
-        {
-          type: 'image',
-          url: '/iit/1 (41).jpg',
+        // {
+        //   type: 'image',
+        //   url: '/iit/1 (41).jpg',
           
-        },
+        // },
         {
           type: 'image',
           url: '/iit/1 (42).jpg',
@@ -325,21 +325,21 @@ export const memories = [
           url: '/iit/1 (44).jpg',
           
         },
+        // {
+        //   type: 'image',
+        //   url: '/iit/1 (45).jpg',
+          
+        // },
         {
           type: 'image',
-          url: '/iit/1 (45).jpg',
+          url: '/iit/1 (55).jpg',
           
         },
-        {
-          type: 'image',
-          url: '/iit/1 (46).jpg',
+        // {
+        //   type: 'image',
+        //   url: '/iit/1 (47).jpg',
           
-        },
-        {
-          type: 'image',
-          url: '/iit/1 (47).jpg',
-          
-        },
+        // },
         {
           type: 'image',
           url: '/iit/1 (48).jpg',
@@ -355,11 +355,11 @@ export const memories = [
           url: '/iit/1 (50).jpg',
          
         },
-        {
-          type: 'image',
-          url: '/iit/1 (51).jpg',
+        // {
+        //   type: 'image',
+        //   url: '/iit/1 (51).jpg',
           
-        },
+        // },
         {
           type: 'image',
           url: '/iit/1 (52).jpg',
@@ -377,7 +377,7 @@ export const memories = [
         },
         {
           type: 'image',
-          url: '/iit/1 (55).jpg',
+          url: '/iit/1 (46).jpg',
           
         },
         {
@@ -405,11 +405,11 @@ export const memories = [
           url: '/iit/1 (60).jpg',
           
         },
-        {
-          type: 'image',
-          url: '/iit/1 (61).jpg',
+        // {
+        //   type: 'image',
+        //   url: '/iit/1 (61).jpg',
           
-        },
+        // },
         {
           type: 'image',
           url: '/iit/1 (62).jpg',

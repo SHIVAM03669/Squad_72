@@ -24,12 +24,12 @@ export const students = [
   {
     id: 4,
     name: 'Anany Koranne',
-    photo: '/anuu.jpg',
+    photo: '/annu.png',
     batch: 'Kalvium 2023',
     bio: 'Full-stack engineer crafting scalable solutions using Node.js and React.',
     learning: ['Node.js', 'MongoDB', 'AWS'],
     github: 'https://github.com/AnanyKoranne',
-    linkedin: 'https://linkedin.com'
+    linkedin: 'https://www.linkedin.com/in/anany-koranne-665408217/'
   },
   {
     id: 5,
@@ -59,7 +59,7 @@ export const students = [
     bio: 'Creating seamless digital experiences using React on the front end.',
     learning: ['Node.js', 'MongoDB', 'AWS'],
     github: 'https://github.com/DhruvMalviya0',
-    linkedin: 'https://linkedin.com'
+    linkedin: 'https://www.linkedin.com/in/dhruv-malviya-02a7b7322/'
   },
   {
     id: 8,
@@ -69,7 +69,7 @@ export const students = [
     bio: 'Full-stack specialist, blending powerful React interfaces with robust Node.js APIs.',
     learning: ['Node.js', 'MongoDB', 'AWS'],
     github: 'https://github.com/xXGauravXx',
-    linkedin: 'https://linkedin.com'
+    linkedin: 'https://www.linkedin.com/in/gaurav-khandelwal-b66a89271/'
   },
   {
     id: 9,
@@ -79,7 +79,7 @@ export const students = [
     bio: 'React and Node.js enthusiast, building efficient and maintainable applications.',
     learning: ['Node.js', 'MongoDB', 'AWS'],
     github: 'https://github.com/HarshitDakhane',
-    linkedin: 'https://linkedin.com'
+    linkedin: 'https://www.linkedin.com/in/harshit-dakhane-345174323/'
   },
   {
     id: 10,
@@ -89,7 +89,7 @@ export const students = [
     bio: 'Fintech geek with a passion for creating WEB-services.',
     learning: ['FINTECH', 'WEB-DEV', 'UI/UX'],
     github: 'https://github.com/HerambInamke',
-    linkedin: 'https://linkedin.com'
+    linkedin: 'https://www.linkedin.com/in/heramb-inamke-9740a232b/'
   },
   {
     id: 11,
@@ -99,17 +99,17 @@ export const students = [
     bio: 'Driving digital innovation through full-stack development with React and Node.js.',
     learning: ['Node.js', 'MongoDB', 'AWS'],
     github: 'https://github.com/Mallu722',
-    linkedin: 'https://linkedin.com'
+    linkedin: 'https://www.linkedin.com/in/mallikarjun-hiremath-b081ab325/'
   },
   {
     id: 12,
     name: 'Piyush Gite',
-    photo: '/pyush.jpg',
+    photo: '/bigmom.png',
     batch: 'Kalvium 2023',
     bio: 'Merging front-end finesse with back-end power using React and Node.js.',
     learning: ['Node.js', 'MongoDB', 'AWS'],
     github: 'https://github.com/piyushgite79',
-    linkedin: 'https://linkedin.com'
+    linkedin: 'https://www.linkedin.com/in/piyush-b-739a6b250/'
   },
   {
     id: 13,

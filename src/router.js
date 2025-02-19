@@ -12,7 +12,8 @@ export function router() {
     '/projects': () => lazyLoad(() => import('./pages/Projects.js')).then(m => m.Projects()),
     '/memories': () => lazyLoad(() => import('./pages/Memories.js')).then(m => m.Memories()),
     '/about': () => lazyLoad(() => import('./pages/About.js')).then(m => m.About()),
-    '/memory/:id': (params) => lazyLoad(() => import('./pages/MemoryDetail.js')).then(m => m.MemoryDetail(params))
+    '/memory/:id': (params) =>
+      lazyLoad(() => import('./pages/MemoryDetail.js')).then(m => m.MemoryDetail(params))
   };
 
   // Cache route components
@@ -34,9 +35,11 @@ export function router() {
       mobileMenuButton.addEventListener('click', toggleMenu);
 
       document.addEventListener('click', (e) => {
-        if (!mobileMenu.contains(e.target) && 
-            !mobileMenuButton.contains(e.target) && 
-            !mobileMenu.classList.contains('hidden')) {
+        if (
+          !mobileMenu.contains(e.target) &&
+          !mobileMenuButton.contains(e.target) &&
+          !mobileMenu.classList.contains('hidden')
+        ) {
           toggleMenu();
         }
       });
@@ -51,7 +54,7 @@ export function router() {
 
   function initializePageAnimations() {
     const path = window.location.pathname;
-    
+
     // Landing page animations
     if (path === '/') {
       const initLandingAnimations = () => {
@@ -59,16 +62,16 @@ export function router() {
         const content = document.querySelector('.content-container');
         const letter = document.querySelector('.letter-overlay');
         const scrollIndicator = document.querySelector('.scroll-indicator');
-        
+
         if (logo && content && letter && scrollIndicator) {
           const handleScroll = () => {
             // Adjusted multiplier to 1.5 so the animations trigger sooner
             const scrollPercent = window.scrollY / (window.innerHeight * 1.5);
             const maxLogoScale = 3;
             const maxLetterScale = 5;
-            
+
             scrollIndicator.style.opacity = scrollPercent > 0.1 ? '0' : '1';
-            
+
             if (scrollPercent <= 0.5) {
               const scale = 1 + Math.min(scrollPercent, maxLogoScale - 1);
               logo.style.transform = `scale(${scale})`;
@@ -80,7 +83,7 @@ export function router() {
             } else if (scrollPercent <= 0.75) {
               const letterProgress = (scrollPercent - 0.5) * 2;
               const letterScale = 1 + Math.min(letterProgress * maxLetterScale, maxLetterScale);
-              
+
               logo.style.opacity = '0';
               letter.style.transform = `scale(${letterScale})`;
               letter.style.opacity = Math.min(letterProgress * 2, 1);
@@ -89,7 +92,7 @@ export function router() {
               content.style.transform = 'translateY(50px)';
             } else {
               const contentProgress = (scrollPercent - 0.75) * 2;
-              
+
               logo.style.opacity = '0';
               letter.style.transform = `scale(${maxLetterScale})`;
               letter.style.opacity = '1';
@@ -101,7 +104,7 @@ export function router() {
 
           window.addEventListener('scroll', handleScroll);
           handleScroll(); // Initialize state
-          
+
           // Reset scroll position
           window.scrollTo(0, 0);
         }
@@ -109,7 +112,7 @@ export function router() {
 
       setTimeout(initLandingAnimations, 100);
     }
-    
+
     // Home page animations
     if (path === '/home') {
       const initHomeAnimations = () => {
@@ -118,7 +121,7 @@ export function router() {
           const text = 'Learning to be the crème de la crème of the web developing world.';
           typingText.textContent = '';
           typingText.style.opacity = '1';
-          
+
           let i = 0;
           const typeWriter = () => {
             if (i < text.length) {
@@ -127,7 +130,7 @@ export function router() {
               setTimeout(typeWriter, 50);
             }
           };
-          
+
           typeWriter();
         }
       };
@@ -143,11 +146,12 @@ export function router() {
 
     window.scrollTo(0, 0);
 
+    // Match static and parameterized routes
     for (const [route, handler] of Object.entries(routes)) {
       if (route.includes(':')) {
         const routeParts = route.split('/');
         const pathParts = path.split('/');
-        
+
         if (routeParts.length === pathParts.length) {
           const match = routeParts.every((part, i) => {
             if (part.startsWith(':')) {
@@ -156,7 +160,7 @@ export function router() {
             }
             return part === pathParts[i];
           });
-          
+
           if (match) {
             matchedRoute = handler;
             break;
@@ -172,20 +176,24 @@ export function router() {
     const page = matchedRoute || routes['/'];
     const cacheKey = `${path}-${JSON.stringify(params)}`;
     let content;
-    
+
     if (componentCache.has(cacheKey)) {
       content = componentCache.get(cacheKey);
     } else {
       content = await page(params);
       componentCache.set(cacheKey, content);
     }
-    
+
     const app = document.querySelector('#app');
-    const navigation = path === '/' ? '' : 
-      await lazyLoad(() => import('./components/Navigation.js')).then(m => m.Navigation());
-    const footer = path === '/' ? '' : 
-      await lazyLoad(() => import('./components/Footer.js')).then(m => m.Footer());
-    
+    const navigation =
+      path === '/'
+        ? ''
+        : await lazyLoad(() => import('./components/Navigation.js')).then(m => m.Navigation());
+    const footer =
+      path === '/'
+        ? ''
+        : await lazyLoad(() => import('./components/Footer.js')).then(m => m.Footer());
+
     app.innerHTML = `
       <div class="min-h-screen bg-gray-900 geometric-pattern">
         ${navigation}
@@ -197,22 +205,22 @@ export function router() {
     setupMobileMenu();
     initializePageAnimations();
 
-    // Updated click event listener to force a full reload when navigating to the landing page ("/")
+    // Click event listener for internal navigation
     app.addEventListener('click', (e) => {
       const link = e.target.closest('a[href^="/"]');
       if (link) {
         e.preventDefault();
         const href = link.getAttribute('href');
-        if (href === '/students') {
-          window.location.href = href;
-        } else if (href === '/') {
-          // Force a full reload when clicking on the landing page link (e.g., the logo)
+
+        if (href === '/') {
+          // For the landing page, force a full reload when already on '/'
           if (window.location.pathname === '/') {
             window.location.reload();
           } else {
             window.location.href = '/';
           }
         } else {
+          // For all other routes (including /students), use pushState
           window.history.pushState({}, '', href);
           handleRoute();
         }

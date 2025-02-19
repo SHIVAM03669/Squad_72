@@ -1,6 +1,28 @@
 export function Home() {
   return `
     <div class="min-h-screen bg-gray-900">
+      <!-- Add the animation styles -->
+      <style>
+        @keyframes typing {
+          from { width: 0; }
+          to { width: 100%; }
+        }
+        
+        @keyframes blink-cursor {
+          from, to { border-color: transparent; }
+          50% { border-color: #FF3939; }
+        }
+        
+        .type-animation {
+          overflow: hidden;
+          white-space: nowrap;
+          display: inline-block;
+          position: relative;
+          padding-right: 2px;
+          animation: typing 4s steps(40, end), blink-cursor 0.75s step-end infinite;
+        }
+      </style>
+
       <!-- Hero Section -->
       <section class="pt-32 pb-20 px-4 relative overflow-hidden">
         <div class="container mx-auto relative z-10 max-w-6xl">
@@ -9,9 +31,12 @@ export function Home() {
               <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight">
                 Welcome to <span class="text-[#FF3939]">Squad 72</span>
               </h1>
-              <p class="text-lg md:text-xl text-gray-300 leading-relaxed">
-                Learning to be the crème de la crème of the web developing world.
-              </p>
+<p class="text-lg md:text-xl text-gray-300 leading-relaxed">
+  <span class="type-animation border-r-2 border-[#FF3939]">
+    Learning to be the <span class="text-[#FF3939]">crème de la crème</span> of the web developing world.
+  </span>
+</p>
+
               <div class="flex flex-wrap gap-6">
                 <a href="/projects" class="bg-[#FF3939] hover:bg-[#FF6347] text-white px-6 py-3 rounded-lg transition-all duration-300">View Projects</a>
                 <a href="/about" class="outline-button">Learn More</a>
