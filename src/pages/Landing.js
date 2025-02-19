@@ -1,16 +1,12 @@
 export function Landing() {
-  // Initialize animation after content is loaded
-  setTimeout(() => {
+  function initializeAnimations() {
     const logo = document.querySelector('.logo-container');
     const content = document.querySelector('.content-container');
     const letter = document.querySelector('.letter-overlay');
     const scrollIndicator = document.querySelector('.scroll-indicator');
-    const maxLogoScale = 3;
-    const maxLetterScale = 5;
-    let contentRevealed = false;
     
     if (logo && content && letter && scrollIndicator) {
-      window.addEventListener('scroll', () => {
+      const handleScroll = () => {
         const scrollPercent = window.scrollY / (window.innerHeight * 2.5);
         
         // Hide scroll indicator on scroll
@@ -19,6 +15,9 @@ export function Landing() {
         } else {
           scrollIndicator.style.opacity = '1';
         }
+        
+        const maxLogoScale = 3;
+        const maxLetterScale = 5;
         
         // First phase: Logo scaling and fading (0-50% scroll)
         if (scrollPercent <= 0.5) {
@@ -60,11 +59,19 @@ export function Landing() {
           
           content.style.opacity = Math.min(contentProgress * 2, 1);
           content.style.transform = `translateY(${Math.max(50 - contentProgress * 100, 0)}px)`;
-          contentRevealed = true;
         }
-      });
+      };
+
+      // Add scroll event listener
+      window.addEventListener('scroll', handleScroll);
+      
+      // Initialize state
+      handleScroll();
     }
-  }, 100);
+  }
+
+  // Initialize animations after a short delay to ensure DOM is ready
+  setTimeout(initializeAnimations, 100);
 
   // Import the ExploreButton component
   import('../components/ExploreButton.js').then(module => {
@@ -84,7 +91,7 @@ export function Landing() {
         </svg>
       </div>
 
-      <!-- Initial Logo with increased width -->
+      <!-- Initial Logo -->
       <div class="logo-container fixed top-0 left-0 w-full h-screen flex items-center justify-center z-30 pointer-events-none transition-all duration-500 ease-out">
         <img 
           src="/logo.png" 

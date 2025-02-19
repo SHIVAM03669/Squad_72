@@ -33,7 +33,6 @@ export function router() {
 
       mobileMenuButton.addEventListener('click', toggleMenu);
 
-      // Use event delegation for better performance
       document.addEventListener('click', (e) => {
         if (!mobileMenu.contains(e.target) && 
             !mobileMenuButton.contains(e.target) && 
@@ -42,7 +41,6 @@ export function router() {
         }
       });
 
-      // Event delegation for mobile menu links
       mobileMenu.addEventListener('click', (e) => {
         if (e.target.tagName === 'A') {
           toggleMenu();
@@ -51,15 +49,99 @@ export function router() {
     }
   }
 
+  function initializePageAnimations() {
+    const path = window.location.pathname;
+    
+    // Landing page animations
+    if (path === '/') {
+      const initLandingAnimations = () => {
+        const logo = document.querySelector('.logo-container');
+        const content = document.querySelector('.content-container');
+        const letter = document.querySelector('.letter-overlay');
+        const scrollIndicator = document.querySelector('.scroll-indicator');
+        
+        if (logo && content && letter && scrollIndicator) {
+          const handleScroll = () => {
+            const scrollPercent = window.scrollY / (window.innerHeight * 2.5);
+            const maxLogoScale = 3;
+            const maxLetterScale = 5;
+            
+            scrollIndicator.style.opacity = scrollPercent > 0.1 ? '0' : '1';
+            
+            if (scrollPercent <= 0.5) {
+              const scale = 1 + Math.min(scrollPercent, maxLogoScale - 1);
+              logo.style.transform = `scale(${scale})`;
+              logo.style.opacity = Math.max(1 - scrollPercent * 2, 0);
+              letter.style.transform = 'scale(1)';
+              letter.style.opacity = '0';
+              content.style.opacity = '0';
+              content.style.transform = 'translateY(50px)';
+            } else if (scrollPercent <= 0.75) {
+              const letterProgress = (scrollPercent - 0.5) * 2;
+              const letterScale = 1 + Math.min(letterProgress * maxLetterScale, maxLetterScale);
+              
+              logo.style.opacity = '0';
+              letter.style.transform = `scale(${letterScale})`;
+              letter.style.opacity = Math.min(letterProgress * 2, 1);
+              letter.querySelector('.number').style.color = `rgba(255, 57, 57, ${Math.min(letterProgress, 1)})`;
+              content.style.opacity = '0';
+              content.style.transform = 'translateY(50px)';
+            } else {
+              const contentProgress = (scrollPercent - 0.75) * 2;
+              
+              logo.style.opacity = '0';
+              letter.style.transform = `scale(${maxLetterScale})`;
+              letter.style.opacity = '1';
+              letter.querySelector('.number').style.color = '#FF3939';
+              content.style.opacity = Math.min(contentProgress * 2, 1);
+              content.style.transform = `translateY(${Math.max(50 - contentProgress * 100, 0)}px)`;
+            }
+          };
+
+          window.addEventListener('scroll', handleScroll);
+          handleScroll(); // Initialize state
+          
+          // Reset scroll position
+          window.scrollTo(0, 0);
+        }
+      };
+
+      setTimeout(initLandingAnimations, 100);
+    }
+    
+    // Home page animations
+    if (path === '/home') {
+      const initHomeAnimations = () => {
+        const typingText = document.querySelector('.typing-text');
+        if (typingText) {
+          const text = 'Learning to be the crème de la crème of the web developing world.';
+          typingText.textContent = '';
+          typingText.style.opacity = '1';
+          
+          let i = 0;
+          const typeWriter = () => {
+            if (i < text.length) {
+              typingText.textContent += text.charAt(i);
+              i++;
+              setTimeout(typeWriter, 50);
+            }
+          };
+          
+          typeWriter();
+        }
+      };
+
+      setTimeout(initHomeAnimations, 100);
+    }
+  }
+
   async function handleRoute() {
     const path = window.location.pathname;
     let matchedRoute = null;
     let params = {};
 
-    // Scroll to top immediately when route changes
     window.scrollTo(0, 0);
 
-    // Check for dynamic routes
     for (const [route, handler] of Object.entries(routes)) {
       if (route.includes(':')) {
         const routeParts = route.split('/');
@@ -87,8 +169,6 @@ export function router() {
     }
 
     const page = matchedRoute || routes['/'];
-    
-    // Check cache first
     const cacheKey = `${path}-${JSON.stringify(params)}`;
     let content;
     
@@ -114,8 +194,8 @@ export function router() {
     `;
 
     setupMobileMenu();
+    initializePageAnimations();
 
-    // Use event delegation for navigation
     app.addEventListener('click', (e) => {
       const link = e.target.closest('a[href^="/"]');
       if (link) {
@@ -134,6 +214,5 @@ export function router() {
   window.addEventListener('popstate', handleRoute);
   handleRoute();
 
-  // Force dark theme
   document.documentElement.classList.add('dark');
 }

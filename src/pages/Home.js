@@ -1,22 +1,28 @@
 export function Home() {
-  // Initialize typing animation after content is loaded
-  setTimeout(() => {
+  function initializeTypingAnimation() {
     const typingText = document.querySelector('.typing-text');
     if (typingText) {
-      typingText.style.opacity = '1';
-      let text = typingText.textContent;
+      // Clear any existing content and animation
       typingText.textContent = '';
+      typingText.style.opacity = '1';
+      
+      const text = 'Learning to be the crème de la crème of the web developing world.';
       let i = 0;
-      const typeWriter = () => {
+      
+      function typeWriter() {
         if (i < text.length) {
-          typingText.textContent += text.charAt(i);
+          typingText.textContent = text.substring(0, i + 1);
           i++;
           setTimeout(typeWriter, 50);
         }
-      };
+      }
+      
       typeWriter();
     }
-  }, 100);
+  }
+
+  // Initialize animation after a short delay
+  setTimeout(initializeTypingAnimation, 100);
 
   return `
     <div class="min-h-screen bg-gray-900">
@@ -28,17 +34,7 @@ export function Home() {
               <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight">
                 Welcome to <span class="text-[#FF3939]">Squad 72</span>
               </h1>
-<p class="typing-text text-lg md:text-xl text-gray-300 leading-relaxed opacity-0"> 
-    Learning to be the 
-    <span style="color: #ef3837 !important; transition: none !important;">
-        crème de la crème
-    </span> 
-    of the web developing world.
-</p>
-
-
-
-
+              <p class="typing-text text-lg md:text-xl text-gray-300 leading-relaxed opacity-0"></p>
               <div class="flex flex-wrap gap-6">
                 <a href="/projects" class="bg-[#FF3939] hover:bg-[#FF6347] text-white px-6 py-3 rounded-lg transition-all duration-300">View Projects</a>
                 <a href="/about" class="outline-button">Learn More</a>
