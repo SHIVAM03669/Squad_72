@@ -56,6 +56,9 @@ export function router() {
     let matchedRoute = null;
     let params = {};
 
+    // Scroll to top immediately when route changes
+    window.scrollTo(0, 0);
+
     // Check for dynamic routes
     for (const [route, handler] of Object.entries(routes)) {
       if (route.includes(':')) {
