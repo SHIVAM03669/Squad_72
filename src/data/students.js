@@ -8,8 +8,8 @@ export const students = [
     bio: 'Building dynamic web applications from front to back with React and Node.js.',
     learning: ['Node.js', 'MongoDB', 'AWS'],
     github: 'https://github.com/Aayush-207',
-    linkedin: 'https://linkedin.com',
-    mail: 'https://github.com/HarshitDakhane'
+    linkedin: 'https://www.linkedin.com/in/aayush-raut-1a195a351/',
+   
   },
   {
     id: 3,
