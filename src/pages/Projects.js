@@ -11,7 +11,7 @@ export function Projects() {
               <img src="${project.image}" alt="${project.title}" class="w-full h-48 object-cover">
               <div class="p-6">
                 <h3 class="text-2xl font-bold mb-2 text-white">${project.title}</h3>
-                   <p class="text-gray-400 mb-4">${project.description}</p>
+                <p class="text-gray-400 mb-4">${project.description}</p>
                 <div class="flex flex-wrap gap-2 mb-4">
                   ${project.tech.map(tech => `
                     <span class="bg-[#FF3939]/10 text-[#FF3939] px-3 py-1 rounded-full text-sm">
