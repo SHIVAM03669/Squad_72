@@ -18,6 +18,25 @@ export function Memories() {
     <section class="pt-32 pb-20 px-4 relative overflow-hidden">
       <div class="container mx-auto relative z-10">
         <h2 class="text-4xl font-bold text-center mb-16 text-white">Our Memories</h2>
+        
+        <!-- Hero Group Photo Section -->
+        <div class="max-w-4xl mx-auto mb-16">
+          <div class="bg-gray-800/50 backdrop-blur-lg rounded-xl overflow-hidden border border-gray-700 hover:shadow-xl transition-all duration-500">
+            <div class="h-[400px] relative">
+              <img 
+                src="/groupphoo.jpg" 
+                alt="Squad 72 Group Photo" 
+                class="w-full h-full object-cover"
+              >
+            </div>
+            <div class="p-4 text-center">
+              <h3 class="text-2xl font-bold text-white mb-1">Squad 72</h3>
+              <p class="text-gray-400">Together we learn, together we grow. Our journey at Kalvium.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Memory Albums Grid -->
         <div class="grid md:grid-cols-2 gap-12 max-w-7xl mx-auto px-4">
           ${memories.map(memory => `
             <div class="memory-card bg-gray-800/50 backdrop-blur-lg rounded-xl overflow-hidden border border-gray-700 hover:shadow-xl transition-all duration-500 hover:-translate-y-2">

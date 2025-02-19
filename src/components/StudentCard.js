@@ -31,6 +31,15 @@ export function StudentCard(props) {
   `;
 
   wrapper.innerHTML = html;
+
+  // Add click handler for mobile
+  const card = wrapper.querySelector('.card');
+  card.addEventListener('click', function() {
+    if (window.matchMedia('(max-width: 768px)').matches) {
+      this.classList.toggle('active');
+    }
+  });
+
   return wrapper.innerHTML;
 }
 
@@ -49,44 +58,26 @@ style.textContent = `
     border: 2px solid #AA0000;
   }
 
-  .card .mail {
-    position: absolute;
-    right: 2rem;
-    top: 1.4rem;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-  }
-
-  .card .mail svg {
-    stroke: #AA0000;
-    stroke-width: 3px;
-    transition: all 0.3s ease;
-  }
-
-  .card .mail svg:hover {
-    stroke: white;
-  }
-
   .card .profile-pic {
     position: absolute;
-    width: calc(100% - 6px);
-    height: calc(100% - 6px);
-    top: 3px;
-    left: 3px;
-    border-radius: 29px;
-    z-index: 2;
-    border: 0px solid #AA0000;
+    width: 100px;
+    height: 100px;
+    aspect-ratio: 1;
+    top: 10px;
+    left: 10px;
+    border-radius: 50%;
+    z-index: 3;
+    border: 4px solid #AA0000;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
     overflow: hidden;
-    transition: all 0.5s ease-in-out 0.2s, z-index 0.5s ease-in-out 0.2s;
+    transition: all 0.5s ease-in-out;
   }
 
   .card .profile-pic img {
-    object-fit: cover;
     width: 100%;
     height: 100%;
-    object-position: center;
-    transition: all 0.5s ease-in-out 0s;
+    object-fit: cover;
+    transition: all 0.5s ease-in-out;
   }
 
   .card .bottom {
@@ -125,15 +116,15 @@ style.textContent = `
     margin-top: 1rem;
   }
 
-.card .bottom .bottom-bottom {
-  position: absolute;
-  bottom: 1rem;
-  left: 1.5rem;
-  right: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end; /* Changed from space-between to flex-end */
-}
+  .card .bottom .bottom-bottom {
+    position: absolute;
+    bottom: 1rem;
+    left: 1.5rem;
+    right: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
 
   .card .bottom .bottom-bottom .social-links-container {
     display: flex;
@@ -152,56 +143,41 @@ style.textContent = `
     transform: scale(1.2);
   }
 
-  .card .bottom .bottom-bottom .button {
-    background: rgb(255, 255, 255);
-    color: #AA0000;
-    border: none;
-    border-radius: 20px;
-    font-size: 0.6rem;
-    padding: 0.4rem 0.6rem;
-    box-shadow: rgba(165, 132, 130, 0.1333333333) 0px 5px 5px 0px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+  /* Desktop hover effects */
+  @media (min-width: 769px) {
+    .card .profile-pic {
+      width: calc(100% - 6px);
+      height: calc(100% - 6px);
+      top: 3px;
+      left: 3px;
+      border-radius: 29px;
+      border: 0px solid #AA0000;
+    }
+
+    .card:hover .profile-pic {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 4px solid #AA0000;
+    }
+
+    .card:hover .bottom {
+      top: 20%;
+      border-radius: 80px 29px 29px 29px;
+    }
   }
 
-  .card .bottom .bottom-bottom .button:hover {
-    background: #f8f8f8;
-    transform: scale(1.05);
-  }
-
-  .card:hover {
-    border-top-left-radius: 55px;
-    box-shadow: 0 0 30px rgba(170, 0, 0, 0.3);
-    border: 2px solid #AA0000;
-  }
-
-  .card:hover .bottom {
-    top: 20%;
-    border-radius: 80px 29px 29px 29px;
-    transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0.2s;
-  }
-
-  .card:hover .profile-pic {
+  /* Mobile active state */
+  .card.active .profile-pic {
     width: 100px;
     height: 100px;
-    aspect-ratio: 1;
-    top: 10px;
-    left: 10px;
     border-radius: 50%;
-    z-index: 3;
     border: 4px solid #AA0000;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
-    transition: all 0.5s ease-in-out, z-index 0.5s ease-in-out 0.1s;
   }
 
-  .card:hover .profile-pic:hover {
-    transform: scale(1.3);
-    border-radius: 0px;
-  }
-
-  .card:hover .profile-pic img {
-    transform: scale(1.5);
-    transition: all 0.5s ease-in-out 0.5s;
+  .card.active .bottom {
+    top: 20%;
+    border-radius: 80px 29px 29px 29px;
   }
 `;
 
