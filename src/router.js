@@ -62,7 +62,8 @@ export function router() {
         
         if (logo && content && letter && scrollIndicator) {
           const handleScroll = () => {
-            const scrollPercent = window.scrollY / (window.innerHeight * 2.5);
+            // Adjusted multiplier to 1.5 so the animations trigger sooner
+            const scrollPercent = window.scrollY / (window.innerHeight * 1.5);
             const maxLogoScale = 3;
             const maxLetterScale = 5;
             
@@ -196,6 +197,7 @@ export function router() {
     setupMobileMenu();
     initializePageAnimations();
 
+    // Updated click event listener to force a full reload when navigating to the landing page ("/")
     app.addEventListener('click', (e) => {
       const link = e.target.closest('a[href^="/"]');
       if (link) {
@@ -203,6 +205,13 @@ export function router() {
         const href = link.getAttribute('href');
         if (href === '/students') {
           window.location.href = href;
+        } else if (href === '/') {
+          // Force a full reload when clicking on the landing page link (e.g., the logo)
+          if (window.location.pathname === '/') {
+            window.location.reload();
+          } else {
+            window.location.href = '/';
+          }
         } else {
           window.history.pushState({}, '', href);
           handleRoute();

@@ -50,30 +50,25 @@ export function Landing() {
         }
         // Final phase: Content reveal (75-100% scroll)
         else {
-          const contentProgress = (scrollPercent - 0.75) * 2;
+          const contentProgress = (scrollPercent - 0.75) * 4; // Adjusted multiplier for faster fade-in
           
           logo.style.opacity = '0';
           letter.style.transform = `scale(${maxLetterScale})`;
           letter.style.opacity = '1';
           letter.querySelector('.number').style.color = '#FF3939';
           
-          content.style.opacity = Math.min(contentProgress * 2, 1);
-          content.style.transform = `translateY(${Math.max(50 - contentProgress * 100, 0)}px)`;
+          content.style.opacity = Math.min(contentProgress, 1);
+          content.style.transform = `translateY(${Math.max(50 - contentProgress * 25, 0)}px)`;
         }
       };
 
-      // Add scroll event listener
       window.addEventListener('scroll', handleScroll);
-      
-      // Initialize state
       handleScroll();
     }
   }
 
-  // Initialize animations after a short delay to ensure DOM is ready
   setTimeout(initializeAnimations, 100);
 
-  // Import the ExploreButton component
   import('../components/ExploreButton.js').then(module => {
     const buttonWrapper = document.querySelector('.explore-button-wrapper');
     if (buttonWrapper) {

@@ -19,7 +19,7 @@ export const students = [
     bio: 'Learning DSA in Python & Java, plus backend development.',
     learning: ['Node.js', 'MongoDB', ],
     github: 'https://github.com/Anant3008',
-    linkedin: 'https://linkedin.com'
+    linkedin: 'https://www.linkedin.com/in/sastrula-anant-780780212/'
   },
   {
     id: 4,
@@ -39,7 +39,7 @@ export const students = [
     bio: 'Experienced in developing modern web ecosystems with Node.js and React.',
     learning: ['Node.js', 'MongoDB', 'AWS'],
     github: 'https://github.com/Avii-KS',
-    linkedin: 'https://linkedin.com'
+    linkedin: 'https://www.linkedin.com/in/avinash-kumar-0602402a0/'
   },
   {
     id: 6,
@@ -49,7 +49,7 @@ export const students = [
     bio: 'Passionate full-stack developer specializing in React and Node.js architectures.',
     learning: ['Node.js', 'MongoDB', 'AWS'],
     github: 'https://github.com/Bhumit267',
-    linkedin: 'https://linkedin.com'
+    linkedin: 'https://www.linkedin.com/in/bhumigya-peswani-2078a432a/'
   },
   {
     id: 7,
@@ -119,7 +119,7 @@ export const students = [
     bio: 'Junior Full-stack developer with experience in Python as well.',
     learning: ['Node.js', 'MongoDB', 'AWS'],
     github: 'https://github.com/Raph1710',
-    linkedin: 'https://linkedin.com'
+    linkedin: 'https://www.linkedin.com/in/raphael-d-almeida-696a22328/'
   },
   {
     id: 1,
@@ -129,7 +129,7 @@ export const students = [
     bio: 'Passionate about frontend development and creating beautiful user experiences.',
     learning: ['React', 'TypeScript', 'UI/UX Design'],
     github: 'https://github.com/SHIVAM03669',
-    linkedin: 'https://linkedin.com'
+    linkedin: 'https://www.linkedin.com/in/shivam03669/'
   },
   {
     id: 14,
@@ -139,7 +139,7 @@ export const students = [
     bio: 'Creating scalable and secure web applications using Node.js and React.',
     learning: ['Node.js', 'MongoDB', 'AWS'],
     github: 'https://github.com/sonua11y',
-    linkedin: 'https://linkedin.com'
+    linkedin: 'https://www.linkedin.com/in/sri-pranathi-indupalli-315421329/'
   },
   {
     id: 15,
@@ -149,7 +149,7 @@ export const students = [
     bio: 'Full-stack developer with a focus on Node.js and React.',
     learning: ['Node.js', 'MongoDB', 'AWS'],
     github: 'https://github.com',
-    linkedin: 'https://linkedin.com'
+    linkedin: 'https://www.linkedin.com/in/sumedh-g-250490300/'
   },
   {
     id: 16,
@@ -159,7 +159,7 @@ export const students = [
     bio: 'Aspiring Software Developer and Building Skills in Python, C++, and Cloud Computing.',
     learning: ['Node.js', 'MongoDB', 'AWS'],
     github: 'https://github.com/Uday9909',
-    linkedin: 'https://linkedin.com'
+    linkedin: 'https://www.linkedin.com/in/udaybir-singh-aa6b41322/'
   },
   {
     id: 17,
@@ -169,7 +169,7 @@ export const students = [
     bio: 'Expert in building interactive and dynamic web platforms with React and Node.js.',
     learning: ['Node.js', 'MongoDB', 'AWS'],
     github: 'https://github.com/VaibhavKrishna0607',
-    linkedin: 'https://linkedin.com'
+    linkedin: 'https://www.linkedin.com/in/vaibhav-krishna-u-7410b7323/'
   },
   {
     id: 18,
@@ -179,7 +179,7 @@ export const students = [
     bio: 'Full-stack professional, turning ideas into reality with React and Node.js.',
     learning: ['Node.js', 'MongoDB', 'AWS'],
     github: 'https://github.com/vedant990-hub',
-    linkedin: 'https://linkedin.com'
+    linkedin: 'https://www.linkedin.com/in/vedant-pawar-63b351328/'
   },  
   // Add more students with their respective photos
 ];
