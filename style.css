@@ -2,9 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+html::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
 body {
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;
+  /* Disable user scrolling during animation */
+  &.animating {
+    overflow: hidden;
+  }
 }
 
 .nav-button {
@@ -36,27 +49,6 @@ body {
 .letter-overlay {
   will-change: transform, opacity;
   transform-origin: center center;
-}
-
-/* Scroll indicator animation */
-.scroll-indicator {
-  animation: fadeInUp 1s ease-out;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translate(-50%, 20px);
-  }
-  to {
-    opacity: 1;
-    transform: translate(-50%, 0);
-  }
-}
-
-/* Smooth scrolling for animation */
-html {
-  scroll-behavior: smooth;
 }
 
 /* Mobile menu styles */
@@ -99,24 +91,6 @@ html {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  @apply bg-gray-700;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-gray-600;
 }
 
 /* Responsive grid adjustments */

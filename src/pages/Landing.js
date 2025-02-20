@@ -3,25 +3,31 @@ export function Landing() {
     const logo = document.querySelector('.logo-container');
     const content = document.querySelector('.content-container');
     const letter = document.querySelector('.letter-overlay');
-    const scrollIndicator = document.querySelector('.scroll-indicator');
     
-    if (logo && content && letter && scrollIndicator) {
-      const handleScroll = () => {
-        window.requestAnimationFrame(() => {
-          // Use a smaller multiplier for a faster response to scroll
-          const scrollPercent = window.scrollY / (window.innerHeight * 1.5);
+    if (logo && content && letter) {
+      // Add class to hide scrollbar during animation
+      document.body.classList.add('animating');
+      
+      // Auto-scroll animation
+      let startTime;
+      const totalDuration = 5000; // Increased to 5 seconds for smoother animation
+      const totalScroll = window.innerHeight * 1.5;
+
+      function autoScroll(timestamp) {
+        if (!startTime) startTime = timestamp;
+        const progress = (timestamp - startTime) / totalDuration;
+
+        if (progress < 1) {
+          const scrollY = progress * totalScroll;
+          window.scrollTo(0, scrollY);
           
-          // Hide scroll indicator when scrolling
-          if (scrollPercent > 0.1) {
-            scrollIndicator.style.opacity = '0';
-          } else {
-            scrollIndicator.style.opacity = '1';
-          }
+          // Calculate scroll percentage and apply animations
+          const scrollPercent = scrollY / totalScroll;
           
           const maxLogoScale = 3;
           const maxLetterScale = 5;
           
-          // Phase 1: Logo scaling and fading (0-50% of our new scroll range)
+          // Phase 1: Logo scaling and fading (0-50%)
           if (scrollPercent <= 0.5) {
             const scale = 1 + Math.min(scrollPercent, maxLogoScale - 1);
             const opacity = Math.max(1 - scrollPercent * 2, 0);
@@ -35,9 +41,9 @@ export function Landing() {
             content.style.opacity = '0';
             content.style.transform = 'translateY(50px)';
           } 
-          // Phase 2: Letter scaling (50-75% scroll)
-          else if (scrollPercent <= 0.75) {
-            const letterProgress = (scrollPercent - 0.5) * 2;
+          // Phase 2: Letter scaling (50-80%)
+          else if (scrollPercent <= 0.8) {
+            const letterProgress = (scrollPercent - 0.5) * (1/0.3); // Adjusted for smoother scaling
             const letterScale = 1 + Math.min(letterProgress * maxLetterScale, maxLetterScale);
             
             logo.style.opacity = '0';
@@ -50,9 +56,9 @@ export function Landing() {
             content.style.opacity = '0';
             content.style.transform = 'translateY(50px)';
           }
-          // Phase 3: Content reveal (75-100% scroll)
+          // Phase 3: Content reveal (80-100%)
           else {
-            const contentProgress = (scrollPercent - 0.75) * 4; // Multiplier for faster fade-in
+            const contentProgress = (scrollPercent - 0.8) * 5;
             
             logo.style.opacity = '0';
             letter.style.transform = `scale(${maxLetterScale})`;
@@ -62,11 +68,18 @@ export function Landing() {
             content.style.opacity = Math.min(contentProgress, 1);
             content.style.transform = `translateY(${Math.max(50 - contentProgress * 25, 0)}px)`;
           }
-        });
-      };
 
-      window.addEventListener('scroll', handleScroll);
-      handleScroll();
+          requestAnimationFrame(autoScroll);
+        } else {
+          // Remove the animating class when animation is complete
+          document.body.classList.remove('animating');
+        }
+      }
+
+      // Start the animation after a short delay
+      setTimeout(() => {
+        requestAnimationFrame(autoScroll);
+      }, 500);
     }
   }
 
@@ -81,14 +94,6 @@ export function Landing() {
 
   return `
     <div class="relative min-h-[400vh] bg-gray-900 overflow-hidden">
-      <!-- Scroll Indicator -->
-      <div class="scroll-indicator fixed bottom-8 left-1/2 -translate-x-1/2 z-40 text-white flex flex-col items-center transition-opacity duration-300 ease-out">
-        <span class="text-sm mb-2">Scroll Down</span>
-        <svg class="w-6 h-6 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-        </svg>
-      </div>
-
       <!-- Initial Logo -->
       <div class="logo-container fixed top-0 left-0 w-full h-screen flex items-center justify-center z-30 pointer-events-none transition-all duration-300 ease-out">
         <img 
