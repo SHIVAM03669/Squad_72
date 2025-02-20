@@ -57,6 +57,28 @@ export function Memories() {
             </div>
           `).join('')}
         </div>
+
+        <!-- Loader Section -->
+        <div class="mt-20 text-center">
+          <p class="text-gray-400 text-lg mb-8">On the horizon: even more!</p>
+          <div class="flex justify-center items-center">
+            <div class="loader">
+              <svg viewBox="0 0 80 80">
+                <circle id="test" cx="40" cy="40" r="32" />
+              </svg>
+            </div>
+            <div class="loader triangle">
+              <svg viewBox="0 0 86 80">
+                <polygon points="43 8 79 72 7 72" />
+              </svg>
+            </div>
+            <div class="loader">
+              <svg viewBox="0 0 80 80">
+                <rect x="8" y="8" width="64" height="64" />
+              </svg>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- Background Elements -->
