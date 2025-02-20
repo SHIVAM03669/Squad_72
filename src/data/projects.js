@@ -1,7 +1,7 @@
 export const projects = [
   {
     title: 'Inventory Management System',
-    description: 'A comprehensive inventory management system built with modern web technologies. Features include real-time stock tracking, order management, and intuitive user interface.',
+    description: 'A modern inventory system with real-time tracking, order management, and an intuitive UI.',
     tech: ['Html','Css','Javascript'],
     image: '/Petu.png',
     link: 'https://petugang.netlify.app/welcome.html',
@@ -9,7 +9,7 @@ export const projects = [
   },
   {
     title: 'Hackathon Project',
-    description: 'A collaborative project developed during a 24-hour hackathon. This innovative solution addresses real-world challenges with a focus on user experience and functionality.',
+    description: 'A 24-hour hackathon project solving real-world challenges with a user-focused design.',
     tech: ['Html', 'Javascript', 'Tailwind CSS'],
     image: '/hack.png',
     link: 'https://hackathon-alt.netlify.app/signup',
@@ -17,7 +17,7 @@ export const projects = [
   },
   {
     title: 'Piano Game',
-    description: 'An interactive piano game that helps users learn music while having fun. Features include note recognition, scoring system, and progressive difficulty levels.',
+    description: 'An interactive piano game with note recognition, scoring, and progressive difficulty for fun learning.',
     tech: ['Html', 'Javascript', 'CSS'],
     image: '/Piano.png',
     link: 'https://soundgame03669.netlify.app/',
@@ -25,7 +25,7 @@ export const projects = [
   },
   {
     title: 'Heart Animation',
-    description: 'A creative web animation showcasing advanced CSS techniques. This project demonstrates the power of modern web animations and interactive design.',
+    description: 'A creative web animation highlighting advanced CSS and interactive design.',
     tech: ['Html','Tailwind CSS'],
     image: '/heart.png',
     link: 'https://animated-crostata-7d7bee.netlify.app/',
@@ -33,7 +33,7 @@ export const projects = [
   },
   {
     title: 'Chill Zone',
-    description: 'A relaxation and entertainment platform built with React. Features include games, relaxation exercises, and a user-friendly interface for stress relief.',
+    description: 'A React-based platform with games and relaxation exercises for stress relief.',
     tech: ['Html','React','Javascript','CSS'],
     image: '/Game.png',
     link: 'https://kalvium-chill-zone.netlify.app/',
@@ -41,7 +41,7 @@ export const projects = [
   },
   {
     title: 'JungFlix',
-    description: 'A Netflix-inspired streaming platform frontend. This project showcases responsive design, smooth animations, and modern UI/UX principles.',
+    description: 'A Netflix-inspired streaming frontend with responsive design, smooth animations, and modern UI/UX.',
     tech: ['Only Frontend','html','Javascript','CSS'],
     image: '/jungflix.png',
     link: 'https://jungflix.netlify.app/',

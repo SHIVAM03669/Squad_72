@@ -47,7 +47,7 @@ export function Home() {
               </p>
               <div class="flex flex-col sm:flex-row gap-4 md:gap-6">
                 <a href="/projects" class="bg-[#FF3939] hover:bg-[#FF6347] text-white px-6 py-3 rounded-lg transition-all duration-300 text-center">View Projects</a>
-                <a href="/about" class="outline-button text-center border border-[#FF3939] text-[#FF3939] hover:bg-[#FF3939] hover:text-white px-6 py-3 rounded-lg transition-all duration-300">Learn More</a>
+                <a href="/about" class="border border-[#FF3939] text-[#FF3939] hover:bg-transparent hover:border-[#FF6347] hover:text-[#FF6347] px-6 py-3 rounded-lg transition-all duration-300 text-center">Learn More</a>
               </div>
             </div>
             <div class="relative hidden md:block">
