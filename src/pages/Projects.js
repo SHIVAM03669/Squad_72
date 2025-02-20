@@ -2,28 +2,30 @@ import { projects } from '../data/projects.js';
 
 export function Projects() {
   return `
-    <section class="pt-24 pb-16 px-4 relative overflow-hidden">
-      <div class="container mx-auto relative z-10">
-        <h2 class="text-3xl font-bold text-center mb-12 text-white">Our Projects</h2>
-        <div class="grid lg:grid-cols-3 md:grid-cols-2 gap-6">
+    <section class="pt-32 pb-20 px-4 relative overflow-hidden">
+      <div class="container mx-auto relative z-10 max-w-5xl">
+        <h2 class="text-4xl font-bold text-center mb-16 text-white">Our Projects</h2>
+        <div class="grid md:grid-cols-2 gap-8 md:gap-12">
           ${projects.map(project => `
             <div class="bg-gray-800/50 backdrop-blur-lg rounded-xl overflow-hidden border border-gray-700 hover:border-gray-600 hover:transform hover:scale-[1.02] hover:shadow-xl transition-all duration-300 group">
-              <img src="${project.image}" alt="${project.title}" class="w-full h-40 object-cover object-top">
-              <div class="p-4">
-                <h3 class="text-xl font-semibold mb-2 text-white">${project.title}</h3>
-                <p class="text-gray-400 text-sm mb-3 line-clamp-2">${project.description}</p>
-                <div class="flex flex-wrap gap-2 mb-3">
+              <div class="aspect-video">
+                <img src="${project.image}" alt="${project.title}" class="w-full h-full object-cover">
+              </div>
+              <div class="p-6 space-y-4">
+                <h3 class="text-2xl font-semibold text-white">${project.title}</h3>
+                <p class="text-gray-400 text-base leading-relaxed">${project.description}</p>
+                <div class="flex flex-wrap gap-2">
                   ${project.tech.map(tech => `
-                    <span class="bg-[#FF3939]/10 text-[#FF3939] px-2.5 py-0.5 rounded-full text-xs font-medium">
+                    <span class="bg-[#FF3939]/10 text-[#FF3939] px-3 py-1 rounded-full text-sm font-medium">
                       ${tech}
                     </span>
                   `).join('')}
                 </div>
-                <p class="text-xs text-gray-500 mb-3 truncate">${project.students.join(', ')}</p>
+                <p class="text-sm text-gray-500">${project.students.join(', ')}</p>
                 <a href="${project.link}" target="_blank" rel="noopener noreferrer" 
-                   class="bg-[#FF3939] hover:bg-[#FF6347] text-white px-4 py-1.5 rounded-lg text-sm transition-all duration-300 inline-flex items-center gap-1">
+                   class="inline-flex items-center bg-[#FF3939] hover:bg-[#FF6347] text-white px-6 py-2.5 rounded-lg text-sm transition-all duration-300 group-hover:scale-105">
                   View Project
-                  <svg class="w-4 h-4 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                   </svg>
                 </a>

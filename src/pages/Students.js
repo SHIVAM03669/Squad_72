@@ -2,6 +2,22 @@ import { students } from '../data/students.js';
 import { StudentCard } from '../components/StudentCard.js';
 
 export function Students() {
+  setTimeout(() => {
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+      card.addEventListener('click', function() {
+        if (window.matchMedia('(max-width: 768px)').matches) {
+          // Remove active class from all other cards
+          cards.forEach(c => {
+            if (c !== this) c.classList.remove('active');
+          });
+          // Toggle active class on clicked card
+          this.classList.toggle('active');
+        }
+      });
+    });
+  }, 100);
+
   return `
     <section class="pt-32 pb-20 px-4 bg-gray-900 relative overflow-hidden">
       <div class="container mx-auto relative z-10">

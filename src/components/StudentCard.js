@@ -31,15 +31,6 @@ export function StudentCard(props) {
   `;
 
   wrapper.innerHTML = html;
-
-  // Add click handler for mobile
-  const card = wrapper.querySelector('.card');
-  card.addEventListener('click', function() {
-    if (window.matchMedia('(max-width: 768px)').matches) {
-      this.classList.toggle('active');
-    }
-  });
-
   return wrapper.innerHTML;
 }
 
@@ -56,6 +47,7 @@ style.textContent = `
     box-shadow: 0 0 15px rgba(170, 0, 0, 0.2);
     transition: all 0.5s ease-in-out;
     border: 2px solid #AA0000;
+    cursor: pointer;
   }
 
   .card .profile-pic {
@@ -168,17 +160,45 @@ style.textContent = `
   }
 
   /* Mobile active state */
-  .card.active .profile-pic {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    border: 4px solid #AA0000;
-  }
+  @media (max-width: 768px) {
+    .card .profile-pic {
+      width: calc(100% - 6px);
+      height: calc(100% - 6px);
+      top: 3px;
+      left: 3px;
+      border-radius: 29px;
+      border: 0px solid #AA0000;
+    }
 
-  .card.active .bottom {
-    top: 20%;
-    border-radius: 80px 29px 29px 29px;
+    .card.active .profile-pic {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 4px solid #AA0000;
+    }
+
+    .card.active .bottom {
+      top: 20%;
+      border-radius: 80px 29px 29px 29px;
+    }
   }
 `;
 
 document.head.appendChild(style);
+
+// Add click handler for mobile view after the page loads
+document.addEventListener('DOMContentLoaded', () => {
+  const cards = document.querySelectorAll('.card');
+  cards.forEach(card => {
+    card.addEventListener('click', function() {
+      if (window.matchMedia('(max-width: 768px)').matches) {
+        // Remove active class from all other cards
+        cards.forEach(c => {
+          if (c !== this) c.classList.remove('active');
+        });
+        // Toggle active class on clicked card
+        this.classList.toggle('active');
+      }
+    });
+  });
+});
