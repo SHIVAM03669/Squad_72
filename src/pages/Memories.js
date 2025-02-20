@@ -20,9 +20,9 @@ export function Memories() {
         <h2 class="text-4xl font-bold text-center mb-16 text-white">Our Memories</h2>
         
         <!-- Hero Group Photo Section -->
-        <div class="max-w-4xl mx-auto mb-16">
+        <div class="max-w-3xl mx-auto mb-12">
           <div class="bg-gray-800/50 backdrop-blur-lg rounded-xl overflow-hidden border border-gray-700 hover:shadow-xl transition-all duration-500">
-            <div class="h-[400px] relative">
+            <div class="h-[300px] relative">
               <img 
                 src="/groupphoo.jpg" 
                 alt="Squad 72 Group Photo" 
