@@ -32,7 +32,7 @@ export const projects = [
     students: ['Made by - Gaurav']
   },
   {
-    title: 'Chill Zone',
+    title: 'Cozy Corner',
     description: 'A React-based platform with games and relaxation exercises for stress relief.',
     tech: ['Html','React','Javascript','CSS'],
     image: '/Game.png',
