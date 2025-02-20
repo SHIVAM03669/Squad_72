@@ -4,7 +4,7 @@ export function About() {
       name: 'Shivam Singh',
       role: 'Lead Developer',
       photo: '/Profile photo.jpg',
-      description: 'FinTech developer with expertise in React and Node.js. Made the entire website of squad 72.'
+      description: 'FinTech developer with expertise in React and Node.js. Developed the website from scratch.'
     },
     {
       name: 'Heramb Inamke',
