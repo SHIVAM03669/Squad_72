@@ -2,6 +2,13 @@ export default {
   esbuild: {
     loader: 'jsx',
   },
+  optimizeDeps: {
+    esbuildOptions: {
+      loader: {
+        '.js': 'jsx'
+      }
+    }
+  },
   server: {
     allowedHosts: "all",
   },
